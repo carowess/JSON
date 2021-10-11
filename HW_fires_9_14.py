@@ -14,11 +14,11 @@ for fire in fire_data:
     lat = fire["latitude"]
     bright = fire["brightness"]
     date = fire["acq_date"]
-    lons.append(lon)
-    lats.append(lat)
     if bright > 450:
+        lons.append(lon)
+        lats.append(lat)
         brights.append(bright)
-    hover_texts.append(date)
+        hover_texts.append(date)
 
 
 from plotly.graph_objs import Scattergeo, Layout
@@ -32,7 +32,7 @@ data = [{
     'lat': lats,
     'text': hover_texts,
     'marker': {
-        'size': [b/100 for b in brights],
+        'size': 10,
         'color': brights,
         'colorscale': 'Viridis',
         'reversescale': True,
